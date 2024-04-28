@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "7ri4QgYCS8cnUuXL4UF1Fhk8yTVfQ+uXwtMxrWgyhlg=",
+  "Source": "OpticaService",
+  "BasePath": "_content/OpticaService",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
