@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OpticaService.DataAccess;
 
@@ -11,9 +12,10 @@ using OpticaService.DataAccess;
 namespace OpticaService.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240502192423_Modification1.1")]
+    partial class Modification11
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -133,7 +135,7 @@ namespace OpticaService.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("CategoriaId")
+                    b.Property<int>("Categoria_idId")
                         .HasColumnType("int");
 
                     b.Property<string>("Codigo")
@@ -146,10 +148,10 @@ namespace OpticaService.Migrations
                     b.Property<DateTime>("FechaCompra")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("MarcaId")
+                    b.Property<int>("Marca_idId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ModeloId")
+                    b.Property<int>("Modelo_idId")
                         .HasColumnType("int");
 
                     b.Property<decimal>("PrecioCompra")
@@ -161,11 +163,11 @@ namespace OpticaService.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoriaId");
+                    b.HasIndex("Categoria_idId");
 
-                    b.HasIndex("MarcaId");
+                    b.HasIndex("Marca_idId");
 
-                    b.HasIndex("ModeloId");
+                    b.HasIndex("Modelo_idId");
 
                     b.ToTable("Productos");
                 });
@@ -195,7 +197,7 @@ namespace OpticaService.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("ClienteId")
+                    b.Property<int>("Cliente_idId")
                         .HasColumnType("int");
 
                     b.Property<string>("Comentario")
@@ -214,91 +216,91 @@ namespace OpticaService.Migrations
                     b.Property<int>("Ficha")
                         .HasColumnType("int");
 
-                    b.Property<int>("OpticoId")
+                    b.Property<int>("Optico_idId")
                         .HasColumnType("int");
 
                     b.Property<decimal>("Precio")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("ProductoId")
+                    b.Property<int>("Producto_idId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ServicioId")
+                    b.Property<int>("Servicio_idId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClienteId");
+                    b.HasIndex("Cliente_idId");
 
-                    b.HasIndex("OpticoId");
+                    b.HasIndex("Optico_idId");
 
-                    b.HasIndex("ProductoId");
+                    b.HasIndex("Producto_idId");
 
-                    b.HasIndex("ServicioId");
+                    b.HasIndex("Servicio_idId");
 
                     b.ToTable("Ventas");
                 });
 
             modelBuilder.Entity("OpticaService.Models.Producto", b =>
                 {
-                    b.HasOne("OpticaService.Models.Categoria", "Categoria")
+                    b.HasOne("OpticaService.Models.Categoria", "Categoria_id")
                         .WithMany()
-                        .HasForeignKey("CategoriaId")
+                        .HasForeignKey("Categoria_idId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("OpticaService.Models.Marca", "Marca")
+                    b.HasOne("OpticaService.Models.Marca", "Marca_id")
                         .WithMany()
-                        .HasForeignKey("MarcaId")
+                        .HasForeignKey("Marca_idId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("OpticaService.Models.Modelo", "Modelo")
+                    b.HasOne("OpticaService.Models.Modelo", "Modelo_id")
                         .WithMany()
-                        .HasForeignKey("ModeloId")
+                        .HasForeignKey("Modelo_idId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Categoria");
+                    b.Navigation("Categoria_id");
 
-                    b.Navigation("Marca");
+                    b.Navigation("Marca_id");
 
-                    b.Navigation("Modelo");
+                    b.Navigation("Modelo_id");
                 });
 
             modelBuilder.Entity("OpticaService.Models.Venta", b =>
                 {
-                    b.HasOne("OpticaService.Models.Cliente", "Cliente")
+                    b.HasOne("OpticaService.Models.Cliente", "Cliente_id")
                         .WithMany()
-                        .HasForeignKey("ClienteId")
+                        .HasForeignKey("Cliente_idId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("OpticaService.Models.Optico", "Optico")
+                    b.HasOne("OpticaService.Models.Optico", "Optico_id")
                         .WithMany()
-                        .HasForeignKey("OpticoId")
+                        .HasForeignKey("Optico_idId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("OpticaService.Models.Producto", "Producto")
+                    b.HasOne("OpticaService.Models.Producto", "Producto_id")
                         .WithMany()
-                        .HasForeignKey("ProductoId")
+                        .HasForeignKey("Producto_idId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("OpticaService.Models.Servicio", "Servicio")
+                    b.HasOne("OpticaService.Models.Servicio", "Servicio_id")
                         .WithMany()
-                        .HasForeignKey("ServicioId")
+                        .HasForeignKey("Servicio_idId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Cliente");
+                    b.Navigation("Cliente_id");
 
-                    b.Navigation("Optico");
+                    b.Navigation("Optico_id");
 
-                    b.Navigation("Producto");
+                    b.Navigation("Producto_id");
 
-                    b.Navigation("Servicio");
+                    b.Navigation("Servicio_id");
                 });
 #pragma warning restore 612, 618
         }

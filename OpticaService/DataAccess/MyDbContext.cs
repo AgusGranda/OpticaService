@@ -8,6 +8,12 @@ namespace OpticaService.DataAccess
         public DbSet<Optico> Opticos { get; set; }
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Producto> Productos { get; set; }
+        public DbSet<Venta> Ventas { get; set; }
+        public DbSet<Servicio> Servicios { get; set; }
+        public DbSet<Categoria> Categorias { get; set; }
+        public DbSet<Marca> Marcas { get; set; }
+        public DbSet<Modelo> Modelos { get; set; }
+
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

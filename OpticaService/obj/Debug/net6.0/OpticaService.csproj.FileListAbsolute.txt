@@ -66,3 +66,4 @@ F:\Programacion\C#\Alkemy\Proyectos\OpticaService\OpticaService\obj\Debug\net6.0
 F:\Programacion\C#\Alkemy\Proyectos\OpticaService\OpticaService\obj\Debug\net6.0\OpticaService.pdb
 F:\Programacion\C#\Alkemy\Proyectos\OpticaService\OpticaService\obj\Debug\net6.0\OpticaService.genruntimeconfig.cache
 F:\Programacion\C#\Alkemy\Proyectos\OpticaService\OpticaService\obj\Debug\net6.0\ref\OpticaService.dll
+F:\Programacion\C#\Alkemy\Proyectos\OpticaService\OpticaService\obj\Debug\net6.0\OpticaService.sourcelink.json

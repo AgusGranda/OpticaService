@@ -1,11 +1,17 @@
-﻿namespace OpticaService.Models
+﻿using System.ComponentModel;
+
+namespace OpticaService.Models
 {
     public class Producto
     {
         public int Id { get; set; }
-        public string Nombre { get; set; }
-        public string Marca { get; set; }
+        public DateTime FechaCompra { get; set; }
+        public decimal PrecioCompra { get; set; }
+        public string Proveedor { get; set; }
         public string Codigo { get; set; }
-        public int Precio { get; set; }
+        public Categoria Categoria{ get; set; }
+        public Marca Marca { get; set; }
+        public Modelo Modelo { get; set; }
+        public bool Estado { get; set; }
     }
 }
