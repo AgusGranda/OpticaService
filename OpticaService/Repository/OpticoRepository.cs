@@ -37,11 +37,14 @@ namespace OpticaService.Repository
 
         public async Task DeleteOptico(int id)
         {
-            var opticoToDelete = await _dbContext.Opticos.FirstOrDefaultAsync(x => x.Id == id);
+            // eliminacion loginca de optico
+
+            var opticoToDelete = await _dbContext.Opticos.FirstOrDefaultAsync(x => x.Id == id); 
             if (opticoToDelete != null)
             {
-                _dbContext.Remove(opticoToDelete);
-                await _dbContext.SaveChangesAsync();    
+                opticoToDelete.Estado = false;
+                _dbContext.Opticos.Update(opticoToDelete);
+                _dbContext.SaveChanges();
             }
         }
 

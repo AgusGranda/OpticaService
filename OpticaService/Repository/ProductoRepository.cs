@@ -20,7 +20,7 @@ namespace OpticaService.Repository
             return await _dbContext.Productos.ToListAsync();
         }
 
-        public async Task<Producto> GetById(int id)
+        public async Task<Producto> GetProductById(int id)
         {
             return await _dbContext.Productos.FirstOrDefaultAsync(x => x.Id == id);
 
@@ -40,10 +40,11 @@ namespace OpticaService.Repository
         }
         public async Task DeleteProducto(int id)
         {
-            var productoToDelete = await _dbContext.Productos.FirstOrDefaultAsync(x => x.Id == id);
-            if (productoToDelete != null)
+           var productToDelete = await _dbContext.Productos.FirstOrDefaultAsync(x => x.Id == id);   
+            if (productToDelete != null)
             {
-                _dbContext.Productos.Remove(productoToDelete);
+                productToDelete.Estado = false;
+                _dbContext.Productos.Update(productToDelete);
                 await _dbContext.SaveChangesAsync();
             }
         }

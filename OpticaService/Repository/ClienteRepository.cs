@@ -38,13 +38,19 @@ namespace OpticaService.Repository
         }
         public async Task DeleteCliente(int id)
         {
-            var trabatoToDelete = await _dbContext.Clientes.FirstOrDefaultAsync(x => x.Id == id);
-            if (trabatoToDelete != null)
+            var clienteToDelete = await _dbContext.Clientes.FirstOrDefaultAsync(x => x.Id == id);
+            if (clienteToDelete != null)
             {
-                _dbContext.Clientes.Remove(trabatoToDelete);
+                clienteToDelete.Estado = false;
+                _dbContext.Clientes.Update(clienteToDelete);
                 await _dbContext.SaveChangesAsync();
             }
         }
 
+        public async Task<Cliente> GetClienteByPhone(int telefono)
+        {
+            return await _dbContext.Clientes.FirstOrDefaultAsync(x => x.Telefono == telefono);
+            
+        }
     }
 }

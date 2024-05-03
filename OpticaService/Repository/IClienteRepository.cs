@@ -9,5 +9,6 @@ namespace OpticaService.Repository
         Task AddCliente(Cliente cliente);
         Task UpdateCliente(Cliente cliente);
         Task DeleteCliente(int id);
+        Task<Cliente> GetClienteByPhone(int telefono);
     }
 }

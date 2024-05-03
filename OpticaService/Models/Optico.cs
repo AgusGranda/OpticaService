@@ -8,5 +8,6 @@ namespace OpticaService.Models
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string Contraseña { get; set; }
+        public bool Estado { get; set; }
     }
 }

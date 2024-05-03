@@ -7,5 +7,6 @@
         public string Apellido { get; set; }
         public int Telefono { get; set; }
         public string? Mail { get; set; }
+        public  bool Estado { get; set; }
     }
 }

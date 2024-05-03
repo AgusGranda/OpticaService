@@ -13,5 +13,6 @@
         public int Descuento { get; set; }
         public decimal Precio { get; set; }
         public string Comentario { get; set; }
+        public int Estado { get; set; }
     }
 }
