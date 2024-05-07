@@ -31,7 +31,6 @@ namespace OpticaService.Repository
             await _dbContext.SaveChangesAsync();
         }
 
-       
 
         public async Task PutProducto(Producto producto)
         {
