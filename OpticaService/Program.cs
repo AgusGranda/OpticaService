@@ -15,10 +15,18 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<MyDbContext>();
 
 
-// add repositorios
+// add dependence injection
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 builder.Services.AddScoped<IOpticoRepository, OpticoRepository>();  
 builder.Services.AddScoped<IProductoRepository, ProductoRepository>();
+builder.Services.AddScoped<ICategoriaRepository, CategoriaRepository>();
+builder.Services.AddScoped<IMarcaRepository, MarcaRepository>();
+builder.Services.AddScoped<IModeloRepository, ModeloRepository>();
+builder.Services.AddScoped<IServicioRepository, ServicioRepository>();
+builder.Services.AddScoped<IVentaRepository, VentaRepository>();
+
+
+
 
 
 var app = builder.Build();
