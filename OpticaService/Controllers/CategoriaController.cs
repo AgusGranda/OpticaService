@@ -24,7 +24,7 @@ namespace OpticaService.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
+        public async Task<IActionResult> GetById(int id)
         {
             return Ok(await _categoriaRepository.GetCategoriaById(id));
         }
@@ -35,7 +35,7 @@ namespace OpticaService.Controllers
             if (categoria != null)
             {
                 await _categoriaRepository.PostCategoria(categoria);
-                return CreatedAtAction(nameof(categoria), new { id = categoria.Id }, categoria);
+                return CreatedAtAction(nameof(GetById), new { id = categoria.Id }, categoria);
 
             }
             return BadRequest();
@@ -49,7 +49,7 @@ namespace OpticaService.Controllers
             {
                 categoriaToEdit.Descripcion = categoria.Descripcion;
                 await _categoriaRepository.PutCategoria(categoriaToEdit);
-                return NoContent();
+                return Ok(categoriaToEdit);
             }
             return NotFound();
 
@@ -62,7 +62,7 @@ namespace OpticaService.Controllers
             if (categoriaToDelete != null)
             {
                 await _categoriaRepository.DeleteCategoria(id);
-                return NoContent();
+                return Ok("Categoria Eliminada");
             }
             return NotFound();
         }

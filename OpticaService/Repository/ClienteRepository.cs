@@ -24,6 +24,14 @@ namespace OpticaService.Repository
         {
             return await _dbContext.Clientes.FirstOrDefaultAsync(x => x.Id == id);
         }
+
+        public async Task<Cliente> GetClienteByPhone(int telefono)
+        {
+            return await _dbContext.Clientes.FirstOrDefaultAsync(x => x.Telefono == telefono);
+
+        }
+
+
         public async Task AddCliente(Cliente cliente)
         {
             await _dbContext.Clientes.AddAsync(cliente);
@@ -47,10 +55,6 @@ namespace OpticaService.Repository
             }
         }
 
-        public async Task<Cliente> GetClienteByPhone(int telefono)
-        {
-            return await _dbContext.Clientes.FirstOrDefaultAsync(x => x.Telefono == telefono);
-            
-        }
+       
     }
 }

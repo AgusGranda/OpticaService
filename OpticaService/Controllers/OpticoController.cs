@@ -24,7 +24,7 @@ namespace OpticaService.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
+        public async Task<IActionResult> GetById(int id)
         {
             return Ok(await _opticoRepository.GetOpticoById(id));
         }
@@ -35,7 +35,7 @@ namespace OpticaService.Controllers
             if(optico != null) 
             { 
                 await _opticoRepository.AddOptico(optico);
-                return CreatedAtAction(nameof(optico), new { id = optico.Id}, optico);
+                return CreatedAtAction(nameof(GetById), new { id = optico.Id}, optico);
             }
             return NotFound();
         }
@@ -49,9 +49,9 @@ namespace OpticaService.Controllers
                 opticoToEdit.Nombre = optico.Nombre;
                 opticoToEdit.Apellido = optico.Apellido;
                 await _opticoRepository.UpdateOptico(opticoToEdit);
-                return NoContent();
+                return Ok();
             }
-            return NotFound();
+            return NotFound(opticoToEdit);
         }
 
         [HttpDelete("{id}")]
@@ -61,7 +61,7 @@ namespace OpticaService.Controllers
             if(opticoToDelete != null)
             {
                 await _opticoRepository.DeleteOptico(id);
-                return NoContent();
+                return Ok("Optico Eliminado");
             }
             return NotFound();
         }

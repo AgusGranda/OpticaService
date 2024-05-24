@@ -24,7 +24,7 @@ namespace OpticaService.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
+        public async Task<IActionResult> GetById(int id)
         {
             return Ok(await _servicioRepository.GetServicioById(id));
         }
@@ -36,7 +36,7 @@ namespace OpticaService.Controllers
             if (servicio != null) 
             {
                 await _servicioRepository.PostServicio(servicio);
-                return CreatedAtAction(nameof(servicio), new { id = servicio.Id }, servicio);
+                return CreatedAtAction(nameof(GetById), new { id = servicio.Id }, servicio);
 
             }
             return NotFound();
@@ -49,7 +49,7 @@ namespace OpticaService.Controllers
             {
                 servicioToEdit.Descripcion = servicio.Descripcion;
                 await _servicioRepository.PutServicio(servicioToEdit);
-                return NoContent();
+                return Ok(servicioToEdit);
             }
             return NotFound();
         }
@@ -61,7 +61,7 @@ namespace OpticaService.Controllers
             if (servicioToDelete != null)
             {
                 await _servicioRepository.DeleteServicio(id);
-                return NoContent();
+                return Ok("Servicio Eliminado");
             }
             return NotFound();  
         }

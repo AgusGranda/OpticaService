@@ -24,7 +24,7 @@ namespace OpticaService.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
+        public async Task<IActionResult> GetById(int id)
         {
             return Ok(await _clienteRepository.GetClienteById(id));
         }
@@ -41,9 +41,9 @@ namespace OpticaService.Controllers
             if (cliente != null)
             {
                 await _clienteRepository.AddCliente(cliente);
-                return CreatedAtAction(nameof(cliente), new {id = cliente.Id }, cliente);
+                return CreatedAtAction(nameof(GetById), new {id = cliente.Id }, cliente);
             }
-            return BadRequest();
+            return NotFound();
         }
 
         [HttpPut("{id}")]
@@ -51,15 +51,15 @@ namespace OpticaService.Controllers
         {
             if (cliente != null)
             {
-                var clienteToEdito = await _clienteRepository.GetClienteById(id);
-                clienteToEdito.Telefono = cliente.Telefono;
-                clienteToEdito.Apellido = cliente.Apellido;
-                clienteToEdito.Nombre = cliente.Nombre;
-                clienteToEdito.Mail = cliente.Mail;
+                var clienteToEdit = await _clienteRepository.GetClienteById(id);
+                clienteToEdit.Telefono = cliente.Telefono;
+                clienteToEdit.Apellido = cliente.Apellido;
+                clienteToEdit.Nombre = cliente.Nombre;
+                clienteToEdit.Mail = cliente.Mail;
 
 
                 await _clienteRepository.UpdateCliente(cliente);
-                return NoContent();
+                return Ok(clienteToEdit);
             }
             return NotFound();
         }
@@ -70,7 +70,7 @@ namespace OpticaService.Controllers
             if (clienteTodelete != null)
             {
                 await _clienteRepository.DeleteCliente(id);
-                return NoContent();
+                return Ok("Cliente Eliminado");
 
             }
             return NotFound();
