@@ -25,8 +25,8 @@ builder.Services.AddScoped<IModeloRepository, ModeloRepository>();
 builder.Services.AddScoped<IServicioRepository, ServicioRepository>();
 builder.Services.AddScoped<IVentaRepository, VentaRepository>();
 
-
-
+// add autoMapper
+builder.Services.AddAutoMapper(typeof(Program));
 
 
 var app = builder.Build();

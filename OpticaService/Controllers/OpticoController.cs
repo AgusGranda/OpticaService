@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using OpticaService.Models;
+using OpticaService.Models.DTO;
 using OpticaService.Repository;
 
 namespace OpticaService.Controllers
@@ -10,17 +12,22 @@ namespace OpticaService.Controllers
     public class OpticoController : Controller
     {
         private readonly IOpticoRepository _opticoRepository;
+        public readonly IMapper _mapper;
 
-        public OpticoController(IOpticoRepository opticoRepository)
+        public OpticoController(IOpticoRepository opticoRepository, IMapper mapper)
         {
             _opticoRepository = opticoRepository;
+            _mapper = mapper;
 
         }
 
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            return Ok(await _opticoRepository.GetAllOpticos());
+            var opticos = await _opticoRepository.GetAllOpticos();
+            var auxOpticoDTO = _mapper.Map<List<OpticoDTO>>(opticos);
+
+            return Ok(auxOpticoDTO);
         }
 
         [HttpGet("{id}")]
