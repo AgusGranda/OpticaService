@@ -33,7 +33,11 @@ namespace OpticaService.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            return Ok(await _opticoRepository.GetOpticoById(id));
+            var optico = await _opticoRepository.GetOpticoById(id);
+            var opticoDTO = _mapper.Map<OpticoDTO>(optico);
+
+            return Ok(opticoDTO);
+            
         }
 
         [HttpPost]
